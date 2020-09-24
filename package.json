@@ -1,0 +1,51 @@
+{
+  "name": "com.oculus.integration",
+  "description": "Oculus Integration for Unity",
+  "author": {
+    "name": "Oculus from Facebook",
+    "email": "",
+    "url": "https://oculus.com"
+  },
+  "version": "29.0.0",
+  "unity": "2018.4",
+  "unityRelease": "0a1",
+  "displayName": "Oculus Integration",
+  "keywords": [
+    "unity",
+    "oculus",
+    "xr"
+  ],
+  "license": "Proprietary",
+  "samples": [
+    {
+      "displayName": "AudioManager",
+      "description": "AudioManager samples",
+      "path": "Samples~/AudioManager"
+    },
+    {
+      "displayName": "Avatar",
+      "description": "Avatar samples",
+      "path": "Samples~/Avatar"
+    },
+    {
+      "displayName": "LipSync",
+      "description": "LipSync samples",
+      "path": "Samples~/LipSync"
+    },
+    {
+      "displayName": "Platform",
+      "description": "Platform samples",
+      "path": "Samples~/Platform"
+    },
+    {
+      "displayName": "SampleFramework",
+      "description": "The Oculus SampleFramework",
+      "path": "Samples~/SampleFramework"
+    },
+    {
+      "displayName": "Spatializer",
+      "description": "Spatializer samples",
+      "path": "Samples~/Spatializer"
+    }
+  ]
+}

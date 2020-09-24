@@ -303,7 +303,10 @@ public class OvrAvatarMaterialManager : MonoBehaviour
     public void ValidateTextures(ovrAvatarPBSMaterialState[] materialStates)
     {
         var props = LocalAvatarConfig.ComponentMaterialProperties;
-
+        
+#if UNITY_EDITOR // we're only validating textures in builds so we're able to debug CombinedMeshes and texture arrays
+        return;
+#else
         int[] heights = new int[(int)TextureType.Count];
         TextureFormat[] formats = new TextureFormat[(int)TextureType.Count];
 
@@ -365,6 +368,7 @@ public class OvrAvatarMaterialManager : MonoBehaviour
                 }
             }
         }
+#endif
     }
 
     // Loading animation on the Dimmer properyt
