@@ -58,8 +58,6 @@ public class OVRProjectConfig : ScriptableObject
 	public bool focusAware;
 	public bool requiresSystemKeyboard;
 
-	//public const string OculusProjectConfigAssetPath = "Assets/Oculus/OculusProjectConfig.asset";
-
 	static OVRProjectConfig()
 	{
 		// BuildPipeline.isBuildingPlayer cannot be called in a static constructor
@@ -77,18 +75,14 @@ public class OVRProjectConfig : ScriptableObject
 
 	private static string GetOculusProjectConfigAssetPath()
 	{
-		var so = ScriptableObject.CreateInstance(typeof(OVRPluginUpdaterStub));
-		var script = MonoScript.FromScriptableObject(so);
-		string assetPath = AssetDatabase.GetAssetPath(script);
-		string editorDir = Directory.GetParent(assetPath).FullName;
-		string ovrDir = Directory.GetParent(editorDir).FullName;
-		string oculusDir = Directory.GetParent(ovrDir).FullName;
-		string configAssetPath = Path.GetFullPath(Path.Combine(oculusDir, "OculusProjectConfig.asset"));
-		Uri configUri = new Uri(configAssetPath);
-		Uri projectUri = new Uri(Application.dataPath);
-		Uri relativeUri = projectUri.MakeRelativeUri(configUri);
-
-		return relativeUri.ToString();
+		var assets = AssetDatabase.FindAssets("t:OVRProjectConfig");
+		if (assets.Length > 0) {
+			var assetPath = AssetDatabase.GUIDToAssetPath(assets[0]);
+			if (AssetDatabase.GetMainAssetTypeAtPath(assetPath) == typeof(OVRProjectConfig))
+				return assetPath;
+		}
+		
+		return "Assets/XR/Settings/OculusProjectConfig.asset";
 	}
 
 	public static OVRProjectConfig GetProjectConfig()
