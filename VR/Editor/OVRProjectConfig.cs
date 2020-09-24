@@ -69,8 +69,6 @@ public class OVRProjectConfig : ScriptableObject
 
 	public Texture2D systemSplashScreen;
 
-	//public const string OculusProjectConfigAssetPath = "Assets/Oculus/OculusProjectConfig.asset";
-
 	static OVRProjectConfig()
 	{
 		// BuildPipeline.isBuildingPlayer cannot be called in a static constructor
