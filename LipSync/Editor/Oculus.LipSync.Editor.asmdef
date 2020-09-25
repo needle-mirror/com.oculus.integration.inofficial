@@ -1,0 +1,18 @@
+{
+    "name": "Oculus.LipSync.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:83aef0834921c454b908d80811b3029f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
