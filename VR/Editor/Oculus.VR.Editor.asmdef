@@ -1,14 +1,18 @@
 {
     "name": "Oculus.VR.Editor",
+    "rootNamespace": "",
     "references": [
         "Oculus.VR"
     ],
-    "optionalUnityReferences": [],
     "includePlatforms": [
         "Editor"
     ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
     "versionDefines": [
         {
             "name": "com.unity.xr.management",
@@ -25,5 +29,6 @@
             "expression": "1.4.0",
             "define": "USING_COMPATIBLE_OCULUS_XR_PLUGIN_VERSION"
         }
-    ]
+    ],
+    "noEngineReferences": false
 }
