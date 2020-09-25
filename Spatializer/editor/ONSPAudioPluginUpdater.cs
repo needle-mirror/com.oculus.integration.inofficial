@@ -62,13 +62,7 @@ class ONSPAudioPluginUpdater
 
     private static string GetUtilitiesRootPath()
     {
-        var so = ScriptableObject.CreateInstance(typeof(ONSPAudioPluginUpdaterStub));
-        var script = MonoScript.FromScriptableObject(so);
-        string assetPath = AssetDatabase.GetAssetPath(script);
-        string editorDir = Directory.GetParent(assetPath).FullName;
-        string ovrDir = Directory.GetParent(editorDir).FullName;
-
-        return ovrDir;
+        return "Packages/com.oculus.integration/Spatializer";
     }
 
     public static string GetVersionDescription(System.Version version)
@@ -121,6 +115,7 @@ class ONSPAudioPluginUpdater
     {
         string ovrPath = GetUtilitiesRootPath();
         string spatializerPluginsPath = Path.GetFullPath(Path.Combine(ovrPath, "../Spatializer/Plugins"));
+        // UnityEngine.Debug.Log(spatializerPluginsPath);
         return spatializerPluginsPath;
     }
 
@@ -307,6 +302,10 @@ class ONSPAudioPluginUpdater
                     }
                 }
             }
+        }
+        else if(!triggeredByAutoUpdate)
+        {
+            UnityEngine.Debug.Log("Spatializer is already updated, no new plugins found");
         }
     }
 
