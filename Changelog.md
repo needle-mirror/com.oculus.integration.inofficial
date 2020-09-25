@@ -2,6 +2,13 @@
 All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [20.0.1-preview] - 2020-09-25
+
+### What's New
+- Oculus Integration is now an (inofficial) package
+- Added AsmDefs for package
+- Moved all Samples into Package samples (accessible via Unity Package Manager)
+
 ## [20.0.0] - 2020-09-03
 
 ### What's New
