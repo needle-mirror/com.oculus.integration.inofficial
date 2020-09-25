@@ -155,8 +155,9 @@ class OVRPluginUpdater
 			{
 				if (File.Exists(path))
 				{
-					string basePath = GetCurrentProjectPath();
-					string relPath = path.Substring(basePath.Length + 1);
+					string basePath = GetAbsolutePackagePath();
+					string localRelPath = path.Substring(basePath.Length + 1);
+					string relPath = GetPackagePath() + localRelPath;
 
 					PluginImporter pi = PluginImporter.GetAtPath(relPath) as PluginImporter;
 					if (pi != null)
@@ -300,6 +301,16 @@ class OVRPluginUpdater
 		return Directory.GetParent(Application.dataPath).FullName;
 	}
 
+	private static string GetAbsolutePackagePath()
+	{
+		return Path.GetDirectoryName(Path.GetFullPath("Packages/com.oculus.integration/package.json"));
+	}
+
+	private static string GetPackagePath()
+	{
+		return "Packages/com.oculus.integration/";
+	}
+	
 	private static string GetUtilitiesPluginRootPath()
 	{
 		return GetUtilitiesRootPath() + @"/Plugins";
@@ -429,8 +440,9 @@ class OVRPluginUpdater
 			{
 				if ((Directory.Exists(path)) || (File.Exists(path)))
 				{
-					string basePath = GetCurrentProjectPath();
-					string relPath = path.Substring(basePath.Length + 1);
+					string basePath = GetAbsolutePackagePath();
+					string localRelPath =  path.Substring(basePath.Length + 1);
+					string relPath = GetPackagePath() + localRelPath;
 					string relDisabledPath = relPath + GetDisabledPluginSuffix();
 
 					AssetDatabase.MoveAsset(relPath, relDisabledPath);
@@ -452,8 +464,9 @@ class OVRPluginUpdater
 
 			if ((Directory.Exists(path + GetDisabledPluginSuffix())) || (File.Exists(path + GetDisabledPluginSuffix())))
 			{
-				string basePath = GetCurrentProjectPath();
-				string relPath = path.Substring(basePath.Length + 1);
+				string basePath = GetAbsolutePackagePath();
+				string localRelPath = path.Substring(basePath.Length + 1);
+				string relPath = GetPackagePath() + localRelPath;
 				string relDisabledPath = relPath + GetDisabledPluginSuffix();
 
 				AssetDatabase.MoveAsset(relDisabledPath, relPath);
