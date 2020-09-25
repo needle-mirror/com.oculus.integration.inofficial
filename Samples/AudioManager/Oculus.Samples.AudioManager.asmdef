@@ -1,0 +1,16 @@
+{
+    "name": "Oculus.Samples.AudioManager",
+    "rootNamespace": "",
+    "references": [
+        "GUID:8db7e4ce3890b764c9db6fb0b5c1cf71"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
