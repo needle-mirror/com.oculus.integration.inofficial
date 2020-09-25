@@ -18,14 +18,34 @@
   "license": "Proprietary",
   "samples": [
     {
-      "displayName": "Project-Wide Tests",
-      "description": "Tests that affect the whole project or a specific Test Space.",
-      "path": "Samples~/Project Tests"
+      "displayName": "AudioManager",
+      "description": "AudioManager samples",
+      "path": "Samples~/AudioManager"
     },
     {
-      "displayName": "Web Export Configuration",
-      "description": "Basic configuration for testing models that are supposed to be exported as GLB or USD files.",
-      "path": "Samples~/Web Export Configuration"
+      "displayName": "Avatar",
+      "description": "Avatar samples",
+      "path": "Samples~/Avatar"
+    },
+    {
+      "displayName": "LipSync",
+      "description": "LipSync samples",
+      "path": "Samples~/LipSync"
+    },
+    {
+      "displayName": "Platform",
+      "description": "Platform samples",
+      "path": "Samples~/Platform"
+    },
+    {
+      "displayName": "SampleFramework",
+      "description": "The Oculus SampleFramework",
+      "path": "Samples~/SampleFramework"
+    },
+    {
+      "displayName": "Spatializer",
+      "description": "Spatializer samples",
+      "path": "Samples~/Spatializer"
     }
   ]
 }
