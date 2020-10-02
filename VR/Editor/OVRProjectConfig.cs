@@ -110,6 +110,8 @@ public class OVRProjectConfig : ScriptableObject
 			projectConfig.skipUnneededShaders = false;
 			projectConfig.focusAware = true;
 			projectConfig.requiresSystemKeyboard = false;
+			if (!Directory.Exists(Path.GetDirectoryName(oculusProjectConfigAssetPath)))
+				Directory.CreateDirectory(Path.GetDirectoryName(oculusProjectConfigAssetPath));
 			AssetDatabase.CreateAsset(projectConfig, oculusProjectConfigAssetPath);
 		}
 		// Force migration to Quest device if still on legacy GearVR/Go device type
