@@ -1,0 +1,14 @@
+LipSync\Plugins\iOS
+LipSync\Plugins\iOS.meta
+LipSync\Plugins\MacOSX
+LipSync\Plugins\MacOSX.meta
+Platform\Plugins\MacOSX
+Platform\Plugins\MacOSX.meta
+Samples~\SampleFramework\Usage\Locomotion\Textures
+Samples~\SampleFramework\Usage\Locomotion\Textures.meta
+Samples~\SampleFramework\Usage\SharedAssets\Skyboxes
+Samples~\SampleFramework\Usage\SharedAssets\Skyboxes.meta
+Samples~\SampleFramework\Usage\SharedAssets\Textures
+Samples~\SampleFramework\Usage\SharedAssets\Textures.meta
+Spatializer\Plugins\AudioPluginOculusSpatializer.bundle
+Spatializer\Plugins\AudioPluginOculusSpatializer.bundle.meta
