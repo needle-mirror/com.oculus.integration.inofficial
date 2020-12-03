@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 ### What's New
 - updated Oculus Integration to 20.1
 - removed all DLLs that are also part of Unity's Oculus XR Plugin to avoid collisions
+- catched a DLLNotFoundException in Spatializer
+- disabled "Auto Referenced" from all AsmDefs
 
 ## [20.1.0] - 2020-10-05
 
