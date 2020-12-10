@@ -79,10 +79,11 @@ public class OvrAvatar : MonoBehaviour
     [SerializeField]
     internal ovrAvatarAssetLevelOfDetail LevelOfDetail = ovrAvatarAssetLevelOfDetail.Highest;
 #endif
-#if UNITY_ANDROID && UNITY_5_5_OR_NEWER && !UNITY_EDITOR
     [Tooltip(
         "Enable to use combined meshes to reduce draw calls. Currently only available on mobile devices. " +
         "Will be forced to false on PC.")]
+    [SerializeField]
+#if UNITY_ANDROID && UNITY_5_5_OR_NEWER && !UNITY_EDITOR
     private bool CombineMeshes = true;
 #else
     private bool CombineMeshes = false;
@@ -551,7 +552,7 @@ public class OvrAvatar : MonoBehaviour
         {
             return;
         }
-#if !UNITY_ANDROID
+#if !UNITY_ANDROID && !UNITY_EDITOR
         if (CombineMeshes)
         {
             CombineMeshes = false;
