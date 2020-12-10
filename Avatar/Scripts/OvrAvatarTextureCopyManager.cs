@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Oculus.Avatar;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 
 public class OvrAvatarTextureCopyManager : MonoBehaviour
 {
@@ -153,8 +154,30 @@ public class OvrAvatarTextureCopyManager : MonoBehaviour
 
     private void CopyTexture(CopyTextureParams copyTextureParams)
     {
+        var src = copyTextureParams.Src;
+        
+        // This is a helper method so we can debug various texture formats in the editor, e.g. combined texture arrays.
+        // Without this, there are issues with textures coming in in DXT1 format (without alpha) but the texture arrays expecting DXT5 (with alpha).
+        // Note that this is relatively slow as we're compressing textures on the fly here.
+        #if UNITY_EDITOR
+        if (copyTextureParams.Src.graphicsFormat != copyTextureParams.Dst.graphicsFormat)
+        {
+            RenderTexture renderTexture = new RenderTexture(copyTextureParams.Dst.width, copyTextureParams.Dst.height, 0, RenderTextureFormat.Default);
+            var convertedTexture = new Texture2D(copyTextureParams.Dst.width, copyTextureParams.Dst.height, DefaultFormat.LDR, TextureCreationFlags.MipChain);
+            Graphics.Blit(src, renderTexture);
+            RenderTexture.active = renderTexture;
+            convertedTexture.ReadPixels(new Rect(0,0,convertedTexture.width, convertedTexture.height), 0, 0);
+            convertedTexture.Apply(true);
+            renderTexture.Release();
+
+            UnityEditor.EditorUtility.CompressTexture(convertedTexture, GraphicsFormatUtility.GetTextureFormat(copyTextureParams.Dst.graphicsFormat), UnityEditor.TextureCompressionQuality.Fast);
+            
+            src = convertedTexture;
+        }
+        #endif
+        
         Graphics.CopyTexture(
-            copyTextureParams.Src,
+            src,
             0,
             copyTextureParams.Mip,
             copyTextureParams.Dst,
