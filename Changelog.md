@@ -2,6 +2,39 @@
 All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [23.0.1-preview] - 2020-12-10
+
+### What's New
+- updated Oculus Integration to 23.0
+- fixed Avatar samples
+
+## [23.0.0] - 2020-12-04
+
+### What's New
+- Added support for OpenXR experimental plugin for Oculus Quest and Oculus Quest2.
+- Added Phase Sync adaptive frame timing to Oculus Quest and Oculus Quest 2 apps.
+- Oculus Quest 2 can now set 80Hz and 90Hz display refresh rates when you select Oculus Quest 2 as a target device.
+- Note: You may encounter issues when running ARM7 build on Oculus Go or Oculus Quest, if you are using Unity's XR Management system with the latest OVRPlugin and the Oculus XR Plugin is outdated. In such case, you can either switch to ARM64 build, or upgrade the Oculus XR Plugin to 1.4.0+ to fix the issue.
+
+### What's Fixed
+- Fixed Unity MRC Vulkan gamma color issue and several validation layer errors
+- Support added for OVROverlay for Vulkan (requires upgrading to the latest Unity version for working functionality)
+- GetSystemHeadsetType() returns ovrpSystemHeadset_Oculus_Link_Quest_2 when using Oculus Link with Oculus Quest 2
+- Enabled GPU boost on Oculus Quest when MRC casting is activated
+- Renamed the target device name for Oculus Quest 2 in the Android Manifest file from delmar to quest2
+
+### Integration Changes
+- Ended support for Unity version 2017.4. The minimum supported Unity Editor version for Oculus development is 2018.4.
+- Updated the Oculus Unity Integration to v18.0, including:
+- Updated OVRPlugin to 1.55
+- Updated the Audio Spatializer to 23.0
+- Updated the Platform integration to 23.0
+- Updated the Avatar integration to 20.1
+- Updated the LipSync integration to 20.0
+
+### License Update
+- Updated Oculus master license for the Oculus Integration package.
+
 ## [20.1.1-preview] - 2020-12-03
 
 ### What's New
