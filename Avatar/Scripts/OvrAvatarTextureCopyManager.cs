@@ -165,9 +165,11 @@ public class OvrAvatarTextureCopyManager : MonoBehaviour
             RenderTexture renderTexture = new RenderTexture(copyTextureParams.Dst.width, copyTextureParams.Dst.height, 0, RenderTextureFormat.Default);
             var convertedTexture = new Texture2D(copyTextureParams.Dst.width, copyTextureParams.Dst.height, DefaultFormat.LDR, TextureCreationFlags.MipChain);
             Graphics.Blit(src, renderTexture);
+            var prev = RenderTexture.active;
             RenderTexture.active = renderTexture;
             convertedTexture.ReadPixels(new Rect(0,0,convertedTexture.width, convertedTexture.height), 0, 0);
             convertedTexture.Apply(true);
+            RenderTexture.active = prev;
             renderTexture.Release();
 
             UnityEditor.EditorUtility.CompressTexture(convertedTexture, GraphicsFormatUtility.GetTextureFormat(copyTextureParams.Dst.graphicsFormat), UnityEditor.TextureCompressionQuality.Fast);
