@@ -43,7 +43,7 @@ public static class OVRPlugin
 #if OVRPLUGIN_UNSUPPORTED_PLATFORM
 	public static readonly System.Version wrapperVersion = _versionZero;
 #else
-	public static readonly System.Version wrapperVersion = OVRP_1_55_0.version;
+	public static readonly System.Version wrapperVersion = OVRP_1_55_1.version;
 #endif
 
 #if !OVRPLUGIN_UNSUPPORTED_PLATFORM
@@ -5097,15 +5097,30 @@ public static class OVRPlugin
 #endif
 	}
 
-	public static bool PollEvent(out EventDataBuffer eventDataBuffer)
+	public static bool PollEvent(ref EventDataBuffer eventDataBuffer)
 	{
 #if OVRPLUGIN_UNSUPPORTED_PLATFORM
 		eventDataBuffer = default(EventDataBuffer);
 		return false;
 #else
-		if (version >= OVRP_1_55_0.version)
+		if (version >= OVRP_1_55_1.version)
 		{
-			return OVRP_1_55_0.ovrp_PollEvent(out eventDataBuffer) == Result.Success;
+			IntPtr DataPtr = IntPtr.Zero;
+			if(eventDataBuffer.EventData == null)
+			{
+				eventDataBuffer.EventData = new byte[EventDataBufferSize];
+			}
+			Result result = OVRP_1_55_1.ovrp_PollEvent2(ref eventDataBuffer.EventType, ref DataPtr);
+
+			if (result != Result.Success || DataPtr == IntPtr.Zero)
+				return false;
+
+			Marshal.Copy(DataPtr, eventDataBuffer.EventData, 0, EventDataBufferSize);
+			return true;
+		}
+		else if (version >= OVRP_1_55_0.version)
+		{
+			return OVRP_1_55_0.ovrp_PollEvent(ref eventDataBuffer) == Result.Success;
 		}
 		else
 		{
@@ -6082,7 +6097,7 @@ public static class OVRPlugin
 		public static extern Result ovrp_GetSkeleton2(SkeletonType skeletonType, out Skeleton2Internal skeleton);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
-		public static extern Result ovrp_PollEvent(out EventDataBuffer eventDataBuffer);
+		public static extern Result ovrp_PollEvent(ref EventDataBuffer eventDataBuffer);
 
 		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern Result ovrp_GetNativeXrApiType(out XrApi xrApi);
@@ -6092,5 +6107,12 @@ public static class OVRPlugin
 
 	}
 
+	private static class OVRP_1_55_1
+	{
+		public static readonly System.Version version = new System.Version(1, 55, 1);
+
+		[DllImport(pluginName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern Result ovrp_PollEvent2(ref EventType eventType, ref IntPtr eventData);
+	}
 #endif // !OVRPLUGIN_UNSUPPORTED_PLATFORM
 }

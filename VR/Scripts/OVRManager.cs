@@ -1135,6 +1135,8 @@ public class OVRManager : MonoBehaviour
 	private static string prevAudioInId = string.Empty;
 	private static bool wasPositionTracked = false;
 
+	private static OVRPlugin.EventDataBuffer eventDataBuffer = new OVRPlugin.EventDataBuffer();
+
 	public static System.Version utilitiesVersion
 	{
 		get { return OVRPlugin.wrapperVersion; }
@@ -1825,9 +1827,7 @@ public class OVRManager : MonoBehaviour
 
 	private void UpdateHMDEvents()
 	{
-		OVRPlugin.EventDataBuffer eventDataBuffer;
-
-		while(OVRPlugin.PollEvent(out eventDataBuffer))
+		while(OVRPlugin.PollEvent(ref eventDataBuffer))
 		{
 			switch(eventDataBuffer.EventType)
 			{
