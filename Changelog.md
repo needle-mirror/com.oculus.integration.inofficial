@@ -2,6 +2,60 @@
 All notable changes to this package will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [25.0.1] - 2021-03-26
+
+### What's New
+- updated Oculus Integration to 25.0
+
+### Integration Changes
+- Updated OVRPlugin to 1.57.0
+
+## [25.0.0] - 2021-02-19
+
+### What's New
+- Added support to upload the debug symbols from Unity
+- Added animations for controller models
+- Color Space API now uses nativeColorGamut and colorGamut variables to manage color spaces
+- Added support for Fisheye Layer in OVROverlay
+- Exposed OVRPlugin.SetKeyboardOverlayUV() to enable positioning of the OS virtual keyboard overlay
+- Added setEyeFovPremultipledAlpha and getEyeFovPremultipledAlpha APIs to enable and disable premultiplied alpha on the EyeFov layer
+  - Added support for the following features in OpenXR:
+  - Different color spaces
+  - Color Scale/Bias
+  - Is External Surface
+  - Equirect Layer
+  - Cubemap Layer
+  - Underlays
+  - Left/Right Textures
+  - Headlocked Layer
+  - Cylinder Layer
+  - Quad Layer
+
+### What's Fixed
+- Null exception error when PollEvent fails
+- Memory leak coming from PollEvent
+- Color gamut settings not being serialized in OVRManager
+- Cylinder layers in Vrapi not applying overriden textyture rectangles properly
+- Layout error by moving OVR Quick Scene Preview work to Update()
+
+### Improvements
+- Improved stability when app is paused or resumed
+- Added new VR intent filter to OVRManifestPreprocessor in Unity
+- Color Gamut now defaults to Rift CV1
+
+### Integration Changes
+- Updated the Oculus Unity Integration to v25.0, including:
+- Updated OVRPlugin to 1.57
+- Updated the Audio Spatializer to 25.0
+- Updated the Platform integration to 25.0
+- Updated the Avatar integration to 20.0
+- Updated the LipSync integration to 20.0
+
+Note: You may encounter issues when running ARM7 build on Oculus Go or Oculus Quest, if you are using Unity's XR Management system with the latest OVRPlugin and the Oculus XR Plugin is outdated. In such case, you can either switch to ARM64 build, or upgrade the Oculus XR Plugin to 1.4.0+ to fix the issue.
+
+### License Update
+- Updated Oculus master license for the Oculus Integration package.
+
 ## [23.1.1-preview] - 2021-01-12
 
 ### What's New
