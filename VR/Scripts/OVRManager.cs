@@ -743,7 +743,7 @@ public class OVRManager : MonoBehaviour, OVRMixedRealityCaptureConfiguration
 	/// Allows overriding the internal mrc camera creation
 	/// </summary>
 	public InstantiateMrcCameraDelegate instantiateMixedRealityCameraGameObject = null;
-	
+
 	// OVRMixedRealityCaptureConfiguration Interface implementation
 	bool OVRMixedRealityCaptureConfiguration.enableMixedReality { get { return enableMixedReality; } set { enableMixedReality = value; } }
 	LayerMask OVRMixedRealityCaptureConfiguration.extraHiddenLayers { get { return extraHiddenLayers; } set { extraHiddenLayers = value; } }
@@ -1188,9 +1188,9 @@ public class OVRManager : MonoBehaviour, OVRMixedRealityCaptureConfiguration
 	public bool useIPDInPositionTracking = true;
 
 	/// <summary>
-	/// If true, each scene load will cause the head pose to reset.
+	/// If true, each scene load will cause the head pose to reset. This function only works on Rift.
 	/// </summary>
-	[Tooltip("If true, each scene load will cause the head pose to reset.")]
+	[Tooltip("If true, each scene load will cause the head pose to reset. This function only works on Rift.")]
 	public bool resetTrackerOnLoad = false;
 
 	/// <summary>
@@ -1490,7 +1490,9 @@ public class OVRManager : MonoBehaviour, OVRMixedRealityCaptureConfiguration
 			{
 				perfTcpServer.enabled = true;
 			}
+#if !UNITY_EDITOR
 			OVRPlugin.SetDeveloperMode(OVRPlugin.Bool.True);
+#endif
 		}
 
 		// Refresh the client color space
@@ -1955,9 +1957,9 @@ public class OVRManager : MonoBehaviour, OVRMixedRealityCaptureConfiguration
 	private static Camera FindMainCamera() {
 
 		Camera lastCamera;
-		if (lastFoundMainCamera != null && 
-		    lastFoundMainCamera.TryGetTarget(out lastCamera) && 
-		    lastCamera != null && 
+		if (lastFoundMainCamera != null &&
+		    lastFoundMainCamera.TryGetTarget(out lastCamera) &&
+		    lastCamera != null &&
 		    lastCamera.CompareTag("MainCamera"))
 		{
 			return lastCamera;
