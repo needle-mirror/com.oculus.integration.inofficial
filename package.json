@@ -6,7 +6,7 @@
     "email": "",
     "url": "https://oculus.com"
   },
-  "version": "29.0.0",
+  "version": "33.0.0",
   "unity": "2018.4",
   "unityRelease": "0a1",
   "displayName": "Oculus Integration",

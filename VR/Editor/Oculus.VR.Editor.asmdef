@@ -1,5 +1,6 @@
 {
     "name": "Oculus.VR.Editor",
+    "rootNamespace": "",
     "references": [
         "GUID:f64c9ebcd7899c3448a08dc9f9ddbe30",
         "GUID:4af21795022437d4bb139a86514b9ff9"
@@ -9,9 +10,9 @@
     ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": false,
+    "overrideReferences": true,
     "precompiledReferences": [],
-    "autoReferenced": true,
+    "autoReferenced": false,
     "defineConstraints": [],
     "versionDefines": [
         {

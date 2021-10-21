@@ -1,5 +1,6 @@
 {
     "name": "Oculus.VR.Scripts.Editor",
+    "rootNamespace": "",
     "references": [
         "Oculus.VR",
         "Oculus.VR.Editor"
@@ -9,9 +10,9 @@
     ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": false,
+    "overrideReferences": true,
     "precompiledReferences": [],
-    "autoReferenced": true,
+    "autoReferenced": false,
     "defineConstraints": [],
     "versionDefines": [
         {
